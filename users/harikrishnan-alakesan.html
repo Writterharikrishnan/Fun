@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harikrishnan Alakesan - AI Portfolio</title>
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Neobrutalism Colors and Variables */
+        :root {
+            --color-primary: #FFFF00; /* Vibrant Yellow */
+            --color-secondary: #8A2BE2; /* Vibrant Purple */
+            --color-accent: #3B82F6; /* Accent Blue */
+            --color-text: #000000;
+            --color-background: #F0F0F0; /* Off-white for stark contrast */
+            --border-thickness: 3px;
+            --shadow-offset: 6px;
+        }
+
+        /* Base Styling & Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial Black', sans-serif; /* Bold, Stark Font */
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-text);
+            transition: all 0.1s;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            padding: 10px 20px;
+            background-color: var(--color-primary);
+            width: fit-content;
+            margin: 40px auto;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 60px 0;
+            min-height: 50vh;
+        }
+        
+        /* Neobrutalist Button Component */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: 900;
+            cursor: pointer;
+            background-color: var(--color-accent);
+            color: white;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-text);
+            margin-top: 15px;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .btn:hover {
+            /* Simulates button click/press */
+            transform: translate(calc(var(--shadow-offset) / 2), calc(var(--shadow-offset) / 2));
+            box-shadow: calc(var(--shadow-offset) / 2) calc(var(--shadow-offset) / 2) 0 var(--color-text);
+        }
+
+        /* --- Navbar --- */
+        #navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--color-primary);
+            border-bottom: var(--border-thickness) solid var(--color-text);
+            box-shadow: 0 4px 0 var(--color-text);
+        }
+
+        #navbar .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        #navbar .logo {
+            font-size: 1.5em;
+            font-weight: 900;
+            padding: 5px 10px;
+            background-color: var(--color-secondary);
+            color: white;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: 4px 4px 0 var(--color-text);
+        }
+
+        #navbar nav a {
+            margin-left: 20px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-bottom: var(--border-thickness) solid transparent;
+        }
+
+        #navbar nav a:hover {
+            background-color: var(--color-accent);
+            color: white;
+            border-color: var(--color-text);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            background-color: var(--color-secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 80vh;
+            border-bottom: var(--border-thickness) solid var(--color-text);
+        }
+
+        #hero .hero-content {
+            padding: 40px;
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: 12px 12px 0 var(--color-text);
+        }
+
+        #hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 0.2em;
+        }
+
+        #hero p {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        /* --- About Section --- */
+        #about .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .neobrutal-card {
+            padding: 30px;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-text);
+        }
+
+        #about .bio-card {
+            background-color: white;
+        }
+
+        #about .skills-card {
+            background-color: var(--color-accent);
+            color: white;
+            padding: 30px;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-text);
+        }
+        
+        #about .skills-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        #about .skills-list li {
+            padding: 8px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Achievements */
+        #achievements {
+            background-color: var(--color-primary);
+            padding: 20px;
+            margin-top: 30px;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: 4px 4px 0 var(--color-text);
+            color: var(--color-text);
+        }
+
+        #achievements ul {
+            list-style: none;
+        }
+
+        #achievements ul li {
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-bottom: 2px dashed var(--color-text);
+        }
+
+        /* --- Experience Section (Timeline Style) --- */
+        .timeline-item {
+            position: relative;
+            padding: 20px 0 20px 40px;
+            margin-bottom: 20px;
+            background-color: white;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-text);
+        }
+
+        .timeline-item::before {
+            content: ' ';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background: var(--color-secondary);
+            border: var(--border-thickness) solid var(--color-text);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item h3 {
+            margin-top: 0;
+            color: var(--color-accent);
+        }
+
+        /* --- Projects Section (Grid) --- */
+        #projects {
+            background-color: var(--color-secondary);
+            color: white;
+        }
+
+        #projects h2 {
+            background-color: var(--color-primary);
+            color: var(--color-text);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding-top: 20px;
+        }
+
+        .project-card {
+            background-color: white;
+            color: var(--color-text);
+            padding: 25px;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: 8px 8px 0 var(--color-primary);
+            transition: box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            box-shadow: 10px 10px 0 var(--color-accent);
+        }
+
+        .project-card h3 {
+            border-bottom: 3px dashed var(--color-text);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .project-card .project-tags {
+            margin-top: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            text-align: center;
+        }
+
+        #contact .contact-form-container {
+            width: 80%;
+            margin: 0 auto;
+            max-width: 600px;
+            background-color: white;
+            padding: 40px;
+            border: var(--border-thickness) solid var(--color-text);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-accent);
+        }
+
+        #contact form label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #contact form input,
+        #contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: var(--border-thickness) solid var(--color-text);
+            outline: none;
+            font-family: inherit;
+            font-size: 1em;
+            background-color: var(--color-background);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--color-text);
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            #navbar .nav-content {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 0;
+            }
+
+            #navbar nav {
+                margin-top: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            #hero h1 {
+                font-size: 3em;
+            }
+
+            #about .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #contact .contact-form-container {
+                width: 95%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header id="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <i class="fas fa-robot"></i> HARIKRISHNAN
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Harikrishnan_Alakesan</h1>
+            <p>Building the Future of AI</p>
+            <a href="#projects" class="btn">View Live Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2><i class="fas fa-user-astronaut"></i> About Me & Expertise</h2>
+        
+        <div class="about-grid">
+            
+            <div class="bio-card neobrutal-card">
+                <h3>Autonomous Systems Architect</h3>
+                <p>I build intelligent systems where AI agents collaborate, solve problems, and take action. From AR classrooms to smart drones, I create end-to-end solutions combining AI, data, and design. Check out my live projects, dev tools, and a future driven by autonomy.</p>
+                
+                <div id="achievements">
+                    <h3><i class="fas fa-medal"></i> Key Achievements</h3>
+                    <ul>
+                        <li>🥈 Runner-Up: Future Tech AI Hackathon – ₹13,000</li>
+                        <li>🥇 Winner: PTU Paper Presentation – ₹1,400</li>
+                        <li>🌍 Top 15: Google Gen AI Hackathon</li>
+                        <li>🚁 Top 25: Buzz on Earth Hackathon (IIT Kanpur)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="skills-card neobrutal-card">
+                <h3>Technical Stack</h3>
+                <ul class="skills-list">
+                    <li><i class="fas fa-code"></i> Python</li>
+                    <li><i class="fas fa-brain"></i> AI / Machine Learning</li>
+                    <li><i class="fas fa-globe"></i> Web Dev</li>
+                </ul>
+                <a href="#contact" class="btn" style="background-color: var(--color-primary); color: var(--color-text); border-color: var(--color-text); box-shadow: 4px 4px 0 var(--color-text);">Hire Me</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Experience Section (Timeline) -->
+    <section id="experience" class="container">
+        <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+        
+        <div class="timeline-container">
+            
+            <div class="timeline-item">
+                <h3>Agentic AI Intern</h3>
+                <h4>Tata Consultancy Service (TCS)</h4>
+                <p>Duration: 2 Months</p>
+                <p>Focused on developing modular AI agents capable of collaboration and autonomous decision-making.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Projects Section (Grid) -->
+    <section id="projects">
+        <div class="container">
+            <h2><i class="fas fa-laptop-code"></i> Featured Projects</h2>
+            
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h3>Mental Health Chatbot</h3>
+                    <p>AI-powered chatbot to support users with mental health queries and predictions, focusing on empathetic responses and early warning indicators.</p>
+                    <div class="project-tags">#AI #NLP #Python</div>
+                    <a href="#" class="btn" style="background-color: var(--color-primary); color: var(--color-text); box-shadow: 4px 4px 0 var(--color-text);">Explore <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Project 2 (Duplicate entry as requested) -->
+                <div class="project-card">
+                    <h3>Mental Health Chatbot</h3>
+                    <p>AI-powered chatbot to support users with mental health queries and predictions, focusing on empathetic responses and early warning indicators.</p>
+                    <div class="project-tags">#AI #NLP #Python</div>
+                    <a href="#" class="btn" style="background-color: var(--color-primary); color: var(--color-text); box-shadow: 4px 4px 0 var(--color-text);">Explore <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2><i class="fas fa-envelope"></i> Connect & Collaborate</h2>
+        
+        <p style="margin-bottom: 25px;">Ready to build something autonomous? Drop me a message.</p>
+        
+        <div class="contact-form-container">
+            <form action="#" method="POST">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" class="btn">Send Autonomous Signal <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Harikrishnan Alakesan. Designed with Neobrutalism ethos.
+    </footer>
+
+</body>
+</html>
