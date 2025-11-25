@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harikrishnan Alakesan | AI Systems Developer</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /*
+        ========================================
+        0. Cyberpunk Neon Variables & Base Reset
+        ========================================
+        */
+        :root {
+            --bg-dark: #0a0a0a;
+            --neon-green: #00ff99; /* Primary glow color */
+            --neon-pink: #ff0066; /* Secondary glow color */
+            --accent-blue: #1a53b5; /* Required Accent */
+            --text-color: #e0e0e0;
+            --font-tech: 'Courier New', 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-tech);
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 60px; /* Space for fixed navbar */
+        }
+
+        a {
+            color: var(--neon-green);
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+
+        section {
+            padding: 80px 5%;
+            min-height: 80vh;
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--accent-blue);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            border-bottom: 3px solid var(--neon-pink);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 40px;
+        }
+
+        /* Glitch/Glow Effect */
+        .glitch-text {
+            animation: text-glow 1.5s infinite alternate;
+        }
+        @keyframes text-glow {
+            0% { text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--accent-blue); }
+            100% { text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-pink); }
+        }
+
+        /*
+        ========================================
+        1. Navbar
+        ========================================
+        */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 2px solid var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--neon-pink);
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+        
+        .nav-logo img {
+            height: 30px; 
+            vertical-align: middle; 
+            margin-right: 5px; 
+            border: none; 
+            box-shadow: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            padding: 5px 10px;
+            border: 1px solid transparent;
+        }
+        
+        .nav-links a:hover {
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 8px var(--neon-green);
+        }
+        
+        /*
+        ========================================
+        2. Hero Section
+        ========================================
+        */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--bg-dark);
+            overflow: hidden;
+            /* Subtle background grid pattern */
+            background-image: linear-gradient(0deg, transparent 24%, var(--accent-blue) 25%, var(--accent-blue) 26%, transparent 27%), linear-gradient(90deg, transparent 24%, var(--accent-blue) 25%, var(--accent-blue) 26%, transparent 27%);
+            background-size: 50px 50px;
+            opacity: 0.9;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-logo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--accent-blue);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 10px;
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-green);
+        }
+
+        .hero-content h3 {
+            font-size: 1.8em;
+            color: var(--neon-green);
+            margin-top: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--accent-blue);
+        }
+
+        /*
+        ========================================
+        3. About Section (Bio, Skills, Achievements)
+        ========================================
+        */
+        #about {
+            background-color: #111;
+        }
+        
+        .bio-text {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            border-left: 3px solid var(--neon-pink);
+            padding-left: 20px;
+            opacity: 0.85;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .skill-tag {
+            padding: 8px 15px;
+            background: rgba(26, 83, 181, 0.3);
+            border: 1px solid var(--accent-blue);
+            border-radius: 5px;
+            color: var(--neon-green);
+            font-size: 0.9em;
+            box-shadow: 0 0 8px rgba(26, 83, 181, 0.7);
+        }
+
+        /* Achievements */
+        .achievements-grid {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--neon-pink);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px var(--neon-pink);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .achievement-card i {
+            margin-right: 10px;
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+
+
+        /*
+        ========================================
+        4. Experience (Timeline)
+        ========================================
+        */
+        #experience {
+            background-color: var(--bg-dark);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Timeline vertical line */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background: var(--neon-pink);
+            border: 4px solid var(--neon-green);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        /* Arrows for timeline connectors */
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--accent-blue);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--accent-blue);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--accent-blue);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--accent-blue) transparent transparent;
+        }
+
+        /* Circles on the right side positioning */
+        .right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--accent-blue);
+            border-radius: 6px;
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+        
+        .timeline-content h4 {
+            color: white;
+        }
+
+        /*
+        ========================================
+        5. Projects (Grid)
+        ========================================
+        */
+        #projects {
+            background-color: #111;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(26, 83, 181, 0.1);
+            border: 2px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 0 15px var(--accent-blue);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--neon-pink);
+            transform: translateX(-100%);
+            transition: transform 0.4s;
+        }
+
+        .project-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .project-card:hover {
+            box-shadow: 0 0 25px var(--neon-green);
+            transform: translateY(-3px);
+        }
+
+        .project-card h3 {
+            color: var(--neon-green);
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /*
+        ========================================
+        6. Contact Section
+        ========================================
+        */
+        #contact {
+            text-align: center;
+            background: var(--bg-dark);
+            border-top: 2px solid var(--neon-pink);
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            font-size: 2em;
+            margin: 0 15px;
+            transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            border-top: 1px dashed var(--accent-blue);
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /*
+        ========================================
+        7. Responsiveness
+        ========================================
+        */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px 5%;
+            }
+            .nav-links {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            body {
+                padding-top: 100px;
+            }
+
+            .hero-content h1 {
+                font-size: 3em;
+            }
+            .hero-content h3 {
+                font-size: 1.5em;
+            }
+            
+            /* Timeline adjustments for mobile */
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            /* Adjust arrows and circles for single column */
+            .timeline-item::before {
+                left: 60px;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--accent-blue) transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+
+            .right::before { 
+                /* Ensures all arrows point left in mobile view */
+                right: auto;
+                left: 60px;
+                border-color: transparent var(--accent-blue) transparent transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 0. Navbar ==================== -->
+    <nav class="navbar">
+        <div class="nav-logo glitch-text">
+            <img src="https://postimg.cc/BXHSCckm" alt="HK Logo"> 
+            Harikrishnan A.
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About/Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ==================== 1. Hero Section ==================== -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="https://postimg.cc/BXHSCckm" alt="Profile Image">
+            </div>
+            <h1 class="glitch-text">Harikrishnan Alakesan</h1>
+            <h3>Building the Future of AI</h3>
+            <p style="color: var(--neon-pink); margin-top: 10px;">[ SYSTEM STATUS: AUTONOMY ENABLED ]</p>
+        </div>
+    </section>
+
+    <!-- ==================== 2. About Section (Bio, Skills & Achievements) ==================== -->
+    <section id="about">
+        <h2><i class="fas fa-user-secret"></i> System Profile</h2>
+
+        <div class="bio-text">
+            <p>I build intelligent systems where AI agents collaborate, solve problems, and take action. From AR classrooms to smart drones, I create end-to-end solutions combining AI, data, and design. Check out my live projects, dev tools, and a future driven by autonomy.</p>
+        </div>
+        
+        <h3><i class="fas fa-code-branch"></i> Core Competencies (Skills)</h3>
+        <div class="skills-container">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">AI / LLM Development</span>
+            <span class="skill-tag">Web Dev (Frontend/Backend)</span>
+        </div>
+
+        <h3><i class="fas fa-trophy"></i> Achievements & Validation</h3>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <i class="fas fa-medal"></i> 🥈 Runner-Up: Future Tech AI Hackathon – ₹13,000
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-award"></i> 🥇 Winner: PTU Paper Presentation – ₹1,400
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-globe-asia"></i> 🌍 Top 15: Google Gen AI Hackathon
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-helicopter"></i> 🚁 Top 25: Buzz on Earth Hackathon (IIT Kanpur)
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ==================== 3. Experience Section (Timeline) ==================== -->
+    <section id="experience">
+        <h2><i class="fas fa-briefcase"></i> Experience Log</h2>
+
+        <div class="timeline">
+            <!-- Experience Item 1 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h4>Agentic AI Intern</h4>
+                    <p style="color: var(--neon-green); margin-bottom: 5px;">Tata Consultancy Service (2 Months)</p>
+                    <small>Focused on developing and deploying collaborative, autonomous AI agents to optimize corporate workflows and decision-making processes.</small>
+                </div>
+            </div>
+        </div>
+        <!-- Education list was empty, so only showing Experience -->
+    </section>
+
+    <!-- ==================== 4. Projects Section (Grid) ==================== -->
+    <section id="projects">
+        <h2><i class="fas fa-terminal"></i> Active Projects</h2>
+
+        <div class="projects-grid">
+            
+            <!-- Project 1 (Duplicated content combined) -->
+            <div class="project-card">
+                <h3>Mental Health Chatbot</h3>
+                <p>AI-powered chatbot designed to support users with mental health queries and predictive analysis. Utilizes advanced NLP models for empathetic and relevant interaction.</p>
+                <p style="margin-top: 15px;"><i class="fas fa-brain"></i> Technology Stack: Python, NLP, Deep Learning</p>
+            </div>
+            
+            <!-- Project 2 - Placeholder inspired by Bio content -->
+            <div class="project-card">
+                <h3>AR/VR Agent Framework</h3>
+                <p>Developing collaborative AI agents that can operate within augmented and virtual reality environments to assist users or manage complex simulation tasks.</p>
+                <p style="margin-top: 15px;"><i class="fas fa-cube"></i> Technology Stack: Unity, Python, Generative AI</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ==================== 5. Contact Section ==================== -->
+    <section id="contact">
+        <h2><i class="fas fa-satellite-dish"></i> Initiate Connection</h2>
+        
+        <div class="contact-info">
+            <p>Ready to collaborate on the next generation of intelligent systems? Send an encrypted transmission.</p>
+        </div>
+
+        <div class="social-links">
+            <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:contact@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
+    <!-- ==================== 6. Footer ==================== -->
+    <footer>
+        <p>&copy; 2024 Harikrishnan Alakesan. Autonomous Portfolio v2.1 | Powered by Neon and Code.</p>
+    </footer>
+
+</body>
+</html>
