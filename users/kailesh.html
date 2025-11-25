@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kailesh // Dev. Protocol</title>
+    <style>
+        /* IMPORTS & FONT FALLBACK */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        /* GLOBAL STYLES */
+        :root {
+            --neon-red: #e2052d;
+            --dark-background: #040406;
+            --light-grey: #a0a0a0;
+            --font-main: 'Orbitron', 'Fira Code', monospace;
+            --glitch-color: #00ffff; /* Contrast color for highlights/glitches */
+        }
+
+        body {
+            background-color: var(--dark-background);
+            color: var(--light-grey);
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 40px;
+            border: 2px solid var(--neon-red);
+            box-shadow: 0 0 15px var(--neon-red), inset 0 0 15px var(--neon-red);
+            background: rgba(10, 10, 15, 0.8);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* SCANLINE EFFECT (Subtle Glitch Vibe) */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                #00000000 0,
+                #00000000 2px,
+                #e2052d11 3px,
+                #e2052d11 4px
+            );
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        /* TYPOGRAPHY & NEON GLOW */
+        h1 {
+            color: var(--glitch-color);
+            text-transform: uppercase;
+            font-size: 3em;
+            margin-bottom: 5px;
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--glitch-color), 0 0 20px rgba(0, 255, 255, 0.3);
+            animation: flicker 1.5s infinite alternate;
+        }
+        
+        h2 {
+            color: var(--neon-red);
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 25px;
+            text-shadow: 0 0 5px var(--neon-red);
+            border-bottom: 1px dashed var(--neon-red);
+            padding-bottom: 5px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .data-section {
+            padding: 15px 0;
+            border-top: 1px solid rgba(226, 5, 45, 0.2);
+            margin-top: 20px;
+        }
+
+        .data-label {
+            color: var(--neon-red);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .data-value {
+            color: #fff;
+            padding-left: 10px;
+        }
+
+        a {
+            color: var(--glitch-color);
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: 0 0 5px var(--glitch-color);
+        }
+
+        /* KEYFRAMES */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 10px var(--glitch-color);
+            }
+            20%, 24%, 55% {        
+                opacity: 0.8;
+                text-shadow: none;
+            }
+            80% {
+                opacity: 1;
+                text-shadow: 0 0 15px var(--glitch-color), 0 0 25px rgba(0, 255, 255, 0.5);
+            }
+        }
+
+        .code-line {
+            background: rgba(226, 5, 45, 0.1);
+            padding: 8px;
+            border-left: 3px solid var(--neon-red);
+            margin-bottom: 10px;
+            transition: background 0.3s;
+        }
+
+        .code-line:hover {
+            background: rgba(226, 5, 45, 0.25);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>KAILESH</h1>
+            <h2>// DEV PROTOCOL INITIATED // JUNIOR DECONSTRUCTOR</h2>
+        </header>
+
+        <section class="data-section">
+            <div class="data-label">Status Log: SRM Acquisition</div>
+            <p class="code-line">
+                > TARGET PROFILE: SRM Student.
+            </p>
+            <p class="code-line">
+                > STATUS: Verified // Successfully completed data migration to Corporate Stack (4LPA Tier).
+            </p>
+            <p class="code-line">
+                > DEPLOYMENT: Full-stack operation at SRM Systems.
+            </p>
+        </section>
+
+        <section class="data-section">
+            <div class="data-label">Contact Matrix</div>
+            <p class="data-value">
+                EMAIL: <a href="mailto:kaileshwar@example.com">kaileshwar@example.com</a>
+            </p>
+        </section>
+
+        <section class="data-section">
+            <div class="data-label">System Specs // Skillset (Placeholder)</div>
+            <p class="data-value" style="font-size: 0.9em;">
+                [// CODE.JS // PYTHON.PY // SQL.DB // C++ // LINUX_ENV // HARDWARE.MNT]
+            </p>
+        </section>
+
+    </div>
+
+</body>
+</html>
